@@ -34,6 +34,8 @@ public class ComputerPaddle : MonoBehaviour
             GameObject currentMissile = Instantiate(missile, muzzle.transform.position, Quaternion.identity);
 
             currentMissile.GetComponent<Rigidbody>().AddForce(-Vector3.forward * missileSpeed, ForceMode.Impulse);
+
+            currentMissile.name = GameConstants.COMPUTER_MISSILE;
         }
     }
 

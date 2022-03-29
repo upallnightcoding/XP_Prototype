@@ -4,9 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - FieldGoal
   - Wall
   - Missile
+  - Coin
+  - ComputerPaddle
+  - PlayerPaddle
+  - PlayerPaddleFieldGoal
+  - ComputerPaddleFieldGoal
   layers:
   - Default
   - TransparentFX
