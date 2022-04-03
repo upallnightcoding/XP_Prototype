@@ -11,30 +11,21 @@ public class ScoreBoard : MonoBehaviour
     private int computerScore = 0;
     private int playerScore = 0;
 
-
     // Start is called before the first frame update
     void Start()
     {
         GameEvents.GetInstance().onScoreUpdate += UpdateScore;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void UpdateScore(ScorePoints scorePoints)
     {
-        //Debug.Log($"Who: {scorePoints.Who} Points: {scorePoints.Points}");
-
         switch(scorePoints.Who)
         {
-            case GameConstants.PLAYER_PADDLE_FIELDGOAL:
+            case GameConstants.PLAYER_MISSILE:
                 playerScore += scorePoints.Points;
                 playerScore_Txt.SetText(playerScore.ToString());
                 break;
-            case GameConstants.COMPUTER_PADDLE_FIELDGOAL:
+            case GameConstants.COMPUTER_MISSILE:
                 computerScore += scorePoints.Points;
                 computerScore_Txt.SetText(computerScore.ToString());
                 break;

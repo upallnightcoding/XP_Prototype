@@ -7,11 +7,14 @@ public class Missile : MonoBehaviour
     // Start is called before the first frame update
     private void OnCollisionEnter(Collision collision)
     {
-        Coin coin = collision.gameObject.GetComponent<Coin>();
+        SelfDestruct destruct = 
+            collision.gameObject.GetComponent<SelfDestruct>();
 
-        if (coin != null)
+        if (destruct != null)
         {
-            coin.DestroySelf();
+            destruct.selfDestruct(name);
+
+            destruct.renew();
         }
 
         Destroy(gameObject);

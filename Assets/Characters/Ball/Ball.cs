@@ -2,19 +2,16 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] private float ballSpeed = 5;
+    [SerializeField] private float ballSpeed;
     [SerializeField] private ParticleSystem explosion;
 
     private Rigidbody rb = null;
-
-    public void AddForce()
-    {
-
-    }
+    private SelfDestruct sd = null;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        sd = GetComponent<SelfDestruct>();
 
         StartBall();
     }
@@ -27,24 +24,20 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log("Collision: " + collision.gameObject.tag);
+        //Debug.Log($"Ball Collision: {collision.gameObject.name}");
 
         switch(collision.gameObject.name)
         {
-            //case "PlayerPaddleFieldGoal":
             case GameConstants.COMPUTER_PADDLE_FIELDGOAL:
-            case GameConstants.PLAYER_PADDLE_FIELDGOAL:
-            case GameConstants.PLAYER_MISSILE:
-            case GameConstants.COMPUTER_MISSILE:
-                gameObject.SetActive(false);
-                ParticleSystem ps = Instantiate(explosion, gameObject.transform.position, Quaternion.identity) as ParticleSystem;
-                GameEvents.GetInstance().ScoreUpdate(collision.gameObject.tag, 1);
-                StartBall();
-                //Destroy(ps.gameObject);
+                sd.selfDestruct(GameConstants.PLAYER_MISSILE);
                 break;
-            case "Wall":
+            case GameConstants.PLAYER_PADDLE_FIELDGOAL:
+                sd.selfDestruct(GameConstants.COMPUTER_MISSILE);
+                break;
+            case "RightWall":
+            case "LeftWall":
                 Vector3 normal = collision.GetContact(0).normal;
-                rb.AddForce(normal);
+                rb.AddForce(normal * 2);
                 break;
         }
     }

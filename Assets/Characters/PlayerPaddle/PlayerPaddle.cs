@@ -9,15 +9,21 @@ public class PlayerPaddle : MonoBehaviour
     /*** Inspector ***/
     /*****************/
 
-    [SerializeField] private float paddleSpeed;
+    [Header("Missle Definition")]
     [SerializeField] private float missileSpeed;
     [SerializeField] private GameObject missile;
+    [SerializeField] private int maxNumberMissiles;
+
+    [Header("Paddle Definition")]
+    [SerializeField] private float paddleSpeed;
     [SerializeField] private GameObject muzzle;
+
     [SerializeField] private int safeGuard;
 
     // Paddle Name 
     private string paddleName = null;
 
+    // Number of missils currently fired
     private int missileCount = 0;
 
     //--------------------------------------------------------
@@ -37,7 +43,7 @@ public class PlayerPaddle : MonoBehaviour
     {
         strafing = Input.GetAxisRaw(paddleName);
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && (missileCount < maxNumberMissiles))
         {
             missileCount++;
         }
@@ -49,22 +55,21 @@ public class PlayerPaddle : MonoBehaviour
     {
         StrafingPaddle();
 
-        if (missileCount > 0)
-        {
-            FireMissile();
-        }
-
+        FireMissile();
     }
 
     private void FireMissile()
     {
-        missileCount--;
+        if (missileCount > 0)
+        {
+            missileCount--;
 
-        GameObject currentMissile = Instantiate(missile, muzzle.transform.position, Quaternion.identity);
+            GameObject currentMissile = Instantiate(missile, muzzle.transform.position, Quaternion.identity);
 
-        currentMissile.GetComponent<Rigidbody>().AddForce(Vector3.forward * missileSpeed, ForceMode.Impulse);
+            currentMissile.GetComponent<Rigidbody>().AddForce(Vector3.forward * missileSpeed, ForceMode.Impulse);
 
-        currentMissile.name = GameConstants.PLAYER_MISSILE;
+            currentMissile.name = GameConstants.PLAYER_MISSILE;
+        }
     }
 
     private void StrafingPaddle()

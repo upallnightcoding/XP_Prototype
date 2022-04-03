@@ -20,14 +20,7 @@ public class CoinGenerator : MonoBehaviour
         if (Random.Range(1, density) == 1)
         {
             Vector3 pos = Random.insideUnitCircle * area;
-            GameObject coinPreFab = Instantiate(coin, new Vector3(pos.x, 0.3f, pos.y), Quaternion.identity);
-
-            Coin newCoin = coinPreFab.gameObject.GetComponent<Coin>();
-
-            if (newCoin != null)
-            {
-                Debug.Log("I have a Coin Component ...");
-            }
+            Instantiate(coin, new Vector3(pos.x, 0.3f, pos.y), Quaternion.identity);
         }
     }
 }

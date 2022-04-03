@@ -813,7 +813,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &799785801
 GameObject:
@@ -846,7 +846,7 @@ Transform:
   - {fileID: 473790199}
   - {fileID: 587940716}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &800546482
 GameObject:
@@ -1342,6 +1342,7 @@ GameObject:
   - component: {fileID: 1320699459}
   - component: {fileID: 1320699458}
   - component: {fileID: 1320699463}
+  - component: {fileID: 1320699464}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -1439,7 +1440,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1320699463
 MonoBehaviour:
@@ -1454,7 +1455,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballSpeed: 5
-  explosion: {fileID: 198000012942003240, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 3}
+  explosion: {fileID: 1075559520479154486, guid: e176c18ed558ab34cb777706e198b41e, type: 3}
+--- !u!114 &1320699464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320699457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de4ba6b15cd354e4f9acde0b64cddf40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 2689268268853047481, guid: 597f8b4f7c1f93a4b99d9e432daffb00, type: 3}
+  ballSpeed: 5
 --- !u!1 &1361814493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,7 +1785,7 @@ Transform:
   m_LocalScale: {x: 20, y: 0.1, z: 25}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1876077924 stripped
 GameObject:
@@ -1811,7 +1826,7 @@ Transform:
   - {fileID: 483065852}
   - {fileID: 1452443622}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2085831902933215670
 PrefabInstance:
@@ -1844,13 +1859,17 @@ PrefabInstance:
       propertyPath: missileSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2085831904893648384, guid: 4d029b30c20ff73419bd6df509c27d8e, type: 3}
+      propertyPath: maxNumberMissiles
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2085831904893648387, guid: 4d029b30c20ff73419bd6df509c27d8e, type: 3}
       propertyPath: m_Name
       value: PaddlePlayer
       objectReference: {fileID: 0}
     - target: {fileID: 2085831904893648396, guid: 4d029b30c20ff73419bd6df509c27d8e, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2085831904893648396, guid: 4d029b30c20ff73419bd6df509c27d8e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1903,7 +1922,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2123692834727246090, guid: caeacac71d9da1a43a3bbc5a052b1e90, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2123692834727246090, guid: caeacac71d9da1a43a3bbc5a052b1e90, type: 3}
       propertyPath: m_LocalPosition.x
