@@ -22,7 +22,7 @@ public class ComputerPaddle : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        MovePaddle();
+        FollowBallTarget();
 
         RandomShooting();
     }
@@ -39,7 +39,7 @@ public class ComputerPaddle : MonoBehaviour
         }
     }
 
-    private void MovePaddle()
+    private void FollowBallTarget()
     {
         if (ball.velocity.z > 0.0f)
         {

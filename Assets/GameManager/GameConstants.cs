@@ -11,4 +11,8 @@ public class GameConstants
     public const string COMPUTER_MISSILE = "ComputerMissile";
 
     public const string PLAYER_MISSILE = "PlayerMissile";
+
+    public const string RIGHT_WALL = "RightWall";
+
+    public const string LEFT_WALL = "LeftWall";
 }
