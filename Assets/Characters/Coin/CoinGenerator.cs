@@ -6,7 +6,9 @@ public class CoinGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject coin;
     [SerializeField] private int density;
-    [SerializeField] private int area;
+    [SerializeField] private int coinArea;
+
+    private int count = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -19,8 +21,9 @@ public class CoinGenerator : MonoBehaviour
     {
         if (Random.Range(1, density) == 1)
         {
-            Vector3 pos = Random.insideUnitCircle * area;
+            Vector3 pos = Random.insideUnitCircle * coinArea;
             Instantiate(coin, new Vector3(pos.x, 0.3f, pos.y), Quaternion.identity);
+            coin.name = $"Coin: {count++}";
         }
     }
 }

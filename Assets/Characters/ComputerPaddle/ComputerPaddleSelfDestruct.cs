@@ -11,7 +11,7 @@ public class ComputerPaddleSelfDestruct : SelfDestruct
 
     public override void selfDestruct(string missileName)
     {
-        GameEvents.GetInstance().ScoreUpdate(missileName, 5);
+        GameEvents.GetInstance().UpdateScore(missileName, 5);
     }
 
 }

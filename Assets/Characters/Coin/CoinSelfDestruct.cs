@@ -11,7 +11,7 @@ public class CoinSelfDestruct : SelfDestruct
 
     public override void selfDestruct(string missileName)
     {
-        GameEvents.GetInstance().ScoreUpdate(missileName, 2);
+        GameEvents.GetInstance().UpdateScore(missileName, 2);
 
         Destroy(gameObject);
     }

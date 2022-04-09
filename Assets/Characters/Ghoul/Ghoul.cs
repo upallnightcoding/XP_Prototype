@@ -5,11 +5,12 @@ using UnityEngine;
 public class Ghoul : MonoBehaviour
 {
     [SerializeField] private int density;
+    [SerializeField] GameObject rockPreFab;
 
     private Animator animator;
 
     private GhoulState state = GhoulState.HIDDEN;
-    private GameObject coinTarget = null;
+    private GameObject boulder = null;
     private float step = 0.9f;
 
     // Start is called before the first frame update
@@ -35,86 +36,71 @@ public class Ghoul : MonoBehaviour
                 break;
             case GhoulState.SPAWN:
                 gameObject.SetActive(true);
-                animator.SetInteger("stateId", (int)GhoulState.SPAWN);
+                animator.Play("spawn");
                 state = GhoulState.SEARCH;
                 break;
             case GhoulState.SEARCH:
-                coinTarget = Search();
+                boulder = SearchForBoulderTarget();
 
-                if (coinTarget != null)
+                if (boulder != null)
                 {
                     animator.SetInteger("stateId", (int)GhoulState.WALK);
                     state = GhoulState.TURN;
-                } 
+                }
 
                 break;
             case GhoulState.TURN:
-                if (coinTarget != null)
+                Vector3 direction = boulder.transform.position - transform.position;
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 1 * Time.deltaTime, 0.0f);
+
+                float angle = Vector3.Angle(direction, transform.forward);
+
+                if (angle < 0.5)
                 {
-                    Vector3 direction = coinTarget.transform.position - transform.position;
-                    Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, 1 * Time.deltaTime, 0.0f);
+                    state = GhoulState.WALK;
+                } 
 
-                    float angle = Vector3.Angle(direction, transform.forward);
-
-                    if (angle < 0.5)
-                    {
-                        state = GhoulState.WALK;
-                    } 
-
-                    transform.rotation = Quaternion.LookRotation(newDirection);
-                }
+                transform.rotation = Quaternion.LookRotation(newDirection);
                 break;
             case GhoulState.WALK:
-                if (coinTarget != null)
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, coinTarget.transform.position, step * Time.deltaTime);
-                    state = (Vector3.Distance(transform.position, coinTarget.transform.position) < 1.2f) ? GhoulState.PICKUP : GhoulState.WALK;
-                }
-                else
-                {
-                    state = GhoulState.SEARCH;
-                }
+                transform.position = Vector3.MoveTowards(transform.position, boulder.transform.position, step * Time.deltaTime);
+                state = (Vector3.Distance(transform.position, boulder.transform.position) < 2.0f) ? GhoulState.PICKUP : GhoulState.WALK;
                 break;
             case GhoulState.PICKUP:
                 animator.SetInteger("stateId", (int)GhoulState.PICKUP);
                 state = GhoulState.WAITPICKUP;
-
                 break;
             case GhoulState.WAITPICKUP:
-                if (coinTarget != null)
-                {
-                    Destroy(coinTarget);
-                    coinTarget = null;
-                }
-                state = AnimatorIsPlaying() ? GhoulState.WAITPICKUP : GhoulState.SEARCH;
-                //state = GhoulState.SEARCH;
                 break;
             case GhoulState.DISSOLVE:
                 break;
         }
-
-        Debug.Log($"State: {state}");
+        
     }
 
-    private bool AnimatorIsPlaying()
+    private void DestroyCoinAnimationEvent()
     {
-        return animator.GetCurrentAnimatorStateInfo(0).length >
-            animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
-    }
-
-    private GameObject Search()
-    {
-        GameObject target = null;
-
-        var allCoins = GameObject.FindGameObjectsWithTag("Coin");
-
-        if (allCoins.Length > 0)
+        if (boulder != null)
         {
-            int select = Random.Range(0, allCoins.Length - 1);
-            target = allCoins[select];    
+            Destroy(boulder);
+            boulder = null;
+            state = GhoulState.SEARCH;
+        }
+    }
+
+    private GameObject SearchForBoulderTarget()
+    {
+        GameObject boulder = null;
+
+        var nextCoin = GameObject.FindGameObjectWithTag("Coin");
+
+        if (nextCoin != null) 
+        {
+            boulder = Instantiate(rockPreFab, nextCoin.transform.position, Quaternion.identity);
+            Destroy(nextCoin);
         }
 
-        return (target);
+        return (boulder);
     }
 
     private void Approach()

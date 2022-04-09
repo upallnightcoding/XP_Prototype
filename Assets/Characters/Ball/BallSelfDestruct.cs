@@ -8,18 +8,31 @@ public class BallSelfDestruct : SelfDestruct
     [SerializeField] private float ballSpeed;
     [SerializeField] private GameObject theBall;
 
-    public override void selfDestruct(string missileName)
+    public override void selfDestruct(string name)
     {
         gameObject.SetActive(false);
         Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
-        GameEvents.GetInstance().ScoreUpdate(missileName, 10);
+
+        switch(name)
+        {
+            case GameConstants.COMPUTER_PADDLE_FIELDGOAL:
+                GameEvents.GetInstance().UpdateLives(name, -1);
+                break;
+            case GameConstants.PLAYER_PADDLE_FIELDGOAL:
+                GameEvents.GetInstance().UpdateLives(name, -1);
+                break;
+            case GameConstants.PLAYER_MISSILE:
+                GameEvents.GetInstance().UpdateScore(name, 10);
+                break;
+            case GameConstants.COMPUTER_MISSILE:
+                GameEvents.GetInstance().UpdateScore(name, 10);
+                break;
+        }
     }
 
     public override void renew()
     {
         StartBall();
-
-        //Destroy(gameObject);
     }
 
     private void StartBall()
@@ -28,7 +41,6 @@ public class BallSelfDestruct : SelfDestruct
         float sz = Random.Range(0, 2) == 0 ? -1 : 1;
 
         transform.position = new Vector3(0.0f, 0.336f, 0.0f);
-        //GameObject newBall = Instantiate(theBall, new Vector3(0.0f, 0.336f, 0.0f), Quaternion.identity);
 
         theBall.GetComponent<Rigidbody>().velocity = new Vector3(sx, 0.0f, sz) * ballSpeed;
         gameObject.SetActive(true);

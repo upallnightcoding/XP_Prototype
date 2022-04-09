@@ -5,22 +5,13 @@ public class GameEvents : MonoBehaviour
 {
     public static GameEvents instance;
 
-    public event Action onBallExplosion;
-    public event Action<ScorePoints> onScoreUpdate;
-
-    private void Awake()
-    {
-    }
+    //public event Action onBallExplosion;
+    public event Action<ScorePoints> onUpdateScore;
+    public event Action<ScoreLives> onUpdateLives;
 
     void Start()
     {
         instance = this;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public static GameEvents GetInstance()
@@ -28,13 +19,7 @@ public class GameEvents : MonoBehaviour
         return (instance);
     }
 
-    public void ScoreUpdate(string who, int points)
-    {
-        onScoreUpdate?.Invoke(new ScorePoints(who, points));
-    }
-
-    public void BallExplosion()
-    {
-        onBallExplosion?.Invoke();
-    }
+    public void UpdateScore(string who, int points) => onUpdateScore?.Invoke(new ScorePoints(who, points));
+    
+    public void UpdateLives(string who, int lives) => onUpdateLives?.Invoke(new ScoreLives(who, lives));
 }
