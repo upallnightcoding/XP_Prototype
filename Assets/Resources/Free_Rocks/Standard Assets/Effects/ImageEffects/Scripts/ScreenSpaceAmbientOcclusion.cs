@@ -59,6 +59,7 @@ namespace UnityStandardAssets.ImageEffects
             DestroyMaterial (m_SSAOMaterial);
         }
 
+        [Obsolete]
         void Start()
         {
             if (!SystemInfo.supportsImageEffects || !SystemInfo.SupportsRenderTextureFormat (RenderTextureFormat.Depth))

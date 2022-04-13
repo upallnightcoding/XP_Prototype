@@ -34,7 +34,7 @@ namespace UnityStandardAssets.ImageEffects
         public Shader tiltShiftShader = null;
         private Material tiltShiftMaterial = null;
 
-
+        [Obsolete]
         public override bool CheckResources () {
             CheckSupport (false);
 

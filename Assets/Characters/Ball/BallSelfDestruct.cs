@@ -10,22 +10,24 @@ public class BallSelfDestruct : SelfDestruct
 
     public override void selfDestruct(string name)
     {
+        Debug.Log($"Ball Self Destruct: {name}");
+
         gameObject.SetActive(false);
         Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
 
         switch(name)
         {
             case GameConstants.COMPUTER_PADDLE_FIELDGOAL:
-                GameEvents.GetInstance().UpdateLives(name, -1);
+                GameEvents.GetInstance().UpdateScore(PlayerOrComputer.COMPUTER, LivesOrPoints.LIVES, -1);
                 break;
             case GameConstants.PLAYER_PADDLE_FIELDGOAL:
-                GameEvents.GetInstance().UpdateLives(name, -1);
+                GameEvents.GetInstance().UpdateScore(PlayerOrComputer.PLAYER, LivesOrPoints.LIVES, -1);
                 break;
             case GameConstants.PLAYER_MISSILE:
-                GameEvents.GetInstance().UpdateScore(name, 10);
+                GameEvents.GetInstance().UpdateScore(PlayerOrComputer.PLAYER, LivesOrPoints.POINTS, 10);
                 break;
             case GameConstants.COMPUTER_MISSILE:
-                GameEvents.GetInstance().UpdateScore(name, 10);
+                GameEvents.GetInstance().UpdateScore(PlayerOrComputer.COMPUTER, LivesOrPoints.POINTS, 10);
                 break;
         }
     }

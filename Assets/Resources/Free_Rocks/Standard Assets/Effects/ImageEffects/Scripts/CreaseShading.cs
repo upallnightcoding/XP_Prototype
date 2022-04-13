@@ -21,7 +21,7 @@ namespace UnityStandardAssets.ImageEffects
         public Shader creaseApplyShader = null;
         private Material creaseApplyMaterial = null;
 
-
+        [Obsolete]
         public override bool CheckResources ()
 		{
             CheckSupport (true);

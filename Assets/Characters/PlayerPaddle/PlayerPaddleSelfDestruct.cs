@@ -11,6 +11,14 @@ public class PlayerPaddleSelfDestruct : SelfDestruct
 
     public override void selfDestruct(string missileName)
     {
-        GameEvents.GetInstance().UpdateScore(missileName, 5);
+        switch (missileName)
+        {
+            case GameConstants.PLAYER_MISSILE:
+                GameEvents.GetInstance().UpdateScore(PlayerOrComputer.PLAYER, LivesOrPoints.POINTS, 5);
+                break;
+            case GameConstants.COMPUTER_MISSILE:
+                GameEvents.GetInstance().UpdateScore(PlayerOrComputer.COMPUTER, LivesOrPoints.POINTS, 5);
+                break;
+        }
     }
 }

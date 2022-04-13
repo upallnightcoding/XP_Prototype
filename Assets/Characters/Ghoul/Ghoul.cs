@@ -97,6 +97,7 @@ public class Ghoul : MonoBehaviour
         if (nextCoin != null) 
         {
             boulder = Instantiate(rockPreFab, nextCoin.transform.position, Quaternion.identity);
+            boulder.transform.rotation = Random.rotation;
             Destroy(nextCoin);
         }
 

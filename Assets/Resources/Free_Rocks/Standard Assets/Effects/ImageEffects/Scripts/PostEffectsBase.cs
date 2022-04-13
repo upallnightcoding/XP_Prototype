@@ -106,6 +106,7 @@ namespace UnityStandardAssets.ImageEffects
             CheckResources ();
         }
 
+        [Obsolete]
         protected bool CheckSupport (bool needDepth)
 		{
             isSupported = true;

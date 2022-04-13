@@ -7,7 +7,6 @@ public class GameEvents : MonoBehaviour
 
     //public event Action onBallExplosion;
     public event Action<ScorePoints> onUpdateScore;
-    public event Action<ScoreLives> onUpdateLives;
 
     void Start()
     {
@@ -19,7 +18,6 @@ public class GameEvents : MonoBehaviour
         return (instance);
     }
 
-    public void UpdateScore(string who, int points) => onUpdateScore?.Invoke(new ScorePoints(who, points));
-    
-    public void UpdateLives(string who, int lives) => onUpdateLives?.Invoke(new ScoreLives(who, lives));
+    public void UpdateScore(PlayerOrComputer who, LivesOrPoints element, int value) => 
+        onUpdateScore?.Invoke(new ScorePoints(who, element, value));
 }
