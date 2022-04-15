@@ -23,6 +23,7 @@ namespace UnityStandardAssets.ImageEffects
 
         private Material aoMaterial = null;
 
+        [Obsolete]
         public override bool CheckResources () {
             CheckSupport (true);
 

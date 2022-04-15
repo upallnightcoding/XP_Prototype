@@ -24,7 +24,7 @@ namespace UnityStandardAssets.ImageEffects
         public Shader overlayShader = null;
         private Material overlayMaterial = null;
 
-
+        [Obsolete]
         public override bool CheckResources ()
 		{
             CheckSupport (false);

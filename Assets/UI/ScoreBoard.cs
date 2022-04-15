@@ -18,10 +18,10 @@ public enum LivesOrPoints
 public class ScoreBoard : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI computerScore_Txt;
-    [SerializeField] private TextMeshProUGUI computerLives_Txt;
+    [SerializeField] private TextMeshProUGUI computerCount_Txt;
 
     [SerializeField] private TextMeshProUGUI playerScore_Txt;
-    [SerializeField] private TextMeshProUGUI playerLives_Txt;
+    [SerializeField] private TextMeshProUGUI playerCount_Txt;
 
     private int computerScore = 0;
     private int computerLives = 5;
@@ -51,7 +51,7 @@ public class ScoreBoard : MonoBehaviour
                 {
                     case LivesOrPoints.LIVES:
                         computerLives += scorePoints.Value;
-                        computerLives_Txt.SetText(computerLives.ToString());
+                        computerCount_Txt.SetText(computerLives.ToString());
                         break;
                     case LivesOrPoints.POINTS:
                         computerScore += scorePoints.Value;
@@ -65,7 +65,7 @@ public class ScoreBoard : MonoBehaviour
                 {
                     case LivesOrPoints.LIVES:
                         playerLives += scorePoints.Value;
-                        playerLives_Txt.SetText(playerLives.ToString());
+                        playerCount_Txt.SetText(playerLives.ToString());
                         break;
                     case LivesOrPoints.POINTS:
                         playerScore += scorePoints.Value;

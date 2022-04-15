@@ -14,7 +14,7 @@ namespace UnityStandardAssets.ImageEffects
         public Texture3D converted3DLut = null;
         public string basedOnTempTex = "";
 
-
+        [Obsolete]
         public override bool CheckResources () {
             CheckSupport (false);
 

@@ -95,7 +95,7 @@ namespace UnityStandardAssets.ImageEffects
                 bokehMaterial = CheckShaderAndCreateMaterial (bokehShader, bokehMaterial);
         }
 
-
+        [Obsolete]
         public override bool CheckResources () {
             CheckSupport (true);
 

@@ -42,7 +42,7 @@ namespace UnityStandardAssets.ImageEffects
         public Shader simpleClearShader;
         private Material simpleClearMaterial;
 
-
+        [Obsolete]
         public override bool CheckResources () {
             CheckSupport (useDepthTexture);
 

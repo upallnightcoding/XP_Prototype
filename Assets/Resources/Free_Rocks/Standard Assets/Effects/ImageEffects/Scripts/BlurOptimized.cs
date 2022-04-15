@@ -28,7 +28,7 @@ namespace UnityStandardAssets.ImageEffects
         public Shader blurShader = null;
         private Material blurMaterial = null;
 
-
+        [Obsolete]
         public override bool CheckResources () {
             CheckSupport (false);
 

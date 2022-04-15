@@ -52,6 +52,7 @@ namespace UnityStandardAssets.ImageEffects
 
         private Camera cachedCamera;
 
+        [Obsolete]
         public override bool CheckResources () {
             CheckSupport (true); // only requires depth, not HDR
 

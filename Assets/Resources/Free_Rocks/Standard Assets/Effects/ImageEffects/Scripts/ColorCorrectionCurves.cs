@@ -58,7 +58,7 @@ namespace UnityStandardAssets.ImageEffects
 
         void Awake () {	}
 
-
+        [Obsolete]
         public override bool CheckResources ()
 		{
             CheckSupport (mode == ColorCorrectionMode.Advanced);

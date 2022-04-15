@@ -10,7 +10,7 @@ public class BallSelfDestruct : SelfDestruct
 
     public override void selfDestruct(string name)
     {
-        Debug.Log($"Ball Self Destruct: {name}");
+        //Debug.Log($"Ball Self Destruct: {name}");
 
         gameObject.SetActive(false);
         Instantiate(explosion, gameObject.transform.position, Quaternion.identity);

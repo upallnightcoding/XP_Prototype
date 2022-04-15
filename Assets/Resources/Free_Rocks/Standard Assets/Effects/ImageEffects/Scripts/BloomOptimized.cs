@@ -38,7 +38,7 @@ namespace UnityStandardAssets.ImageEffects
         public Shader fastBloomShader = null;
         private Material fastBloomMaterial = null;
 
-
+        [Obsolete]
         public override bool CheckResources ()
 		{
             CheckSupport (false);

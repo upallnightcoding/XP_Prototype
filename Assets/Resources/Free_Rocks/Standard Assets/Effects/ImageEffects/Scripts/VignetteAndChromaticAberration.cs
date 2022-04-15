@@ -32,7 +32,7 @@ namespace UnityStandardAssets.ImageEffects
         private Material m_SeparableBlurMaterial;
         private Material m_ChromAberrationMaterial;
 
-
+        [Obsolete]
         public override bool CheckResources ()
         {
             CheckSupport (false);

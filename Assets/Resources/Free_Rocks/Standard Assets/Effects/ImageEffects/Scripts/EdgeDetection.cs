@@ -31,7 +31,7 @@ namespace UnityStandardAssets.ImageEffects
         private Material edgeDetectMaterial = null;
         private EdgeDetectMode oldMode = EdgeDetectMode.SobelDepthThin;
 
-
+        [Obsolete]
         public override bool CheckResources ()
 		{
             CheckSupport (true);

@@ -26,7 +26,7 @@ namespace UnityStandardAssets.ImageEffects
         public Shader fogShader = null;
         private Material fogMaterial = null;
 
-
+        [Obsolete]
         public override bool CheckResources ()
 		{
             CheckSupport (true);

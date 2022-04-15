@@ -79,7 +79,7 @@ namespace UnityStandardAssets.ImageEffects
         public Shader brightPassFilterShader;
         private Material brightPassFilterMaterial;
 
-
+        [Obsolete]
         public override bool CheckResources ()
         {
             CheckSupport (false);

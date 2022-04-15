@@ -28,11 +28,11 @@ public class Ball : MonoBehaviour
         switch(collision.gameObject.name)
         {
             case GameConstants.COMPUTER_PADDLE_FIELDGOAL:
-                sd.selfDestruct(GameConstants.PLAYER_MISSILE);
+                sd.selfDestruct(GameConstants.COMPUTER_PADDLE_FIELDGOAL);
                 sd.renew();
                 break;
             case GameConstants.PLAYER_PADDLE_FIELDGOAL:
-                sd.selfDestruct(GameConstants.COMPUTER_MISSILE);
+                sd.selfDestruct(GameConstants.PLAYER_PADDLE_FIELDGOAL);
                 sd.renew();
                 break;
             case GameConstants.RIGHT_WALL:

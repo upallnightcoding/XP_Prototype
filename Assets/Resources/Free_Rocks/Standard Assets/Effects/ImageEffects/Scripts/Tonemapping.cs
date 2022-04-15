@@ -52,7 +52,7 @@ namespace UnityStandardAssets.ImageEffects
         private RenderTexture rt = null;
         private RenderTextureFormat rtFormat = RenderTextureFormat.ARGBHalf;
 
-
+        [Obsolete]
         public override bool CheckResources()
         {
             CheckSupport(false, true);

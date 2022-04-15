@@ -22,7 +22,7 @@ namespace UnityStandardAssets.ImageEffects
         public Shader separableBlurShader = null;
         public Shader contrastCompositeShader = null;
 
-
+        [Obsolete]
         public override bool CheckResources ()
 		{
             CheckSupport (false);

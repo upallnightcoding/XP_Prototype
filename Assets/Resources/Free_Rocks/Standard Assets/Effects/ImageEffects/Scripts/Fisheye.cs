@@ -16,7 +16,7 @@ namespace UnityStandardAssets.ImageEffects
         public Shader fishEyeShader = null;
         private Material fisheyeMaterial = null;
 
-
+        [Obsolete]
         public override bool CheckResources ()
 		{
             CheckSupport (false);

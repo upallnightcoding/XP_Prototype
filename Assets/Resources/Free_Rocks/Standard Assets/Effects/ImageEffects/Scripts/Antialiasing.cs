@@ -82,7 +82,7 @@ namespace UnityStandardAssets.ImageEffects
             return returnValue;
         }
 
-
+        [Obsolete]
         public override bool CheckResources()
         {
             CheckSupport(false);

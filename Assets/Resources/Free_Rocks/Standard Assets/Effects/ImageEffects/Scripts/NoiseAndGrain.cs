@@ -37,7 +37,7 @@ namespace UnityStandardAssets.ImageEffects
 
         private static float TILE_AMOUNT = 64.0f;
 
-
+        [Obsolete]
         public override bool CheckResources ()
 		{
             CheckSupport (false);
