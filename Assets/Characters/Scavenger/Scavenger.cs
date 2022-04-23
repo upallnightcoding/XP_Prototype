@@ -5,24 +5,11 @@ using UnityEngine;
 public class Scavenger : MonoBehaviour
 {
     [SerializeField] private GameObject firePoint;
+    [SerializeField] private GameObject fireBallPreFab;
 
-    // Start is called before the first frame update
-    void Start()
+    public void ThrowFireBall()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void Throw()
-    {
-        //Instantiate(coin, firePoint.transform.position, Quaternion.identity);
-        GameObject ball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        ball.transform.position = firePoint.transform.position;
-        ball.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+        GameObject fileBall = Instantiate(fireBallPreFab, firePoint.transform.position, Quaternion.identity);
+        fileBall.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, 0.0f, -150.0f));
     }
 }
