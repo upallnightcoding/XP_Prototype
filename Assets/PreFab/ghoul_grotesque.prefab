@@ -72,6 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4367381351104460725}
   - component: {fileID: 4450072404720226083}
+  - component: {fileID: -5347484903939011675}
   m_Layer: 0
   m_Name: ghoul_grotesque
   m_TagString: Untagged
@@ -93,6 +94,7 @@ Transform:
   - {fileID: 4367580297646771889}
   - {fileID: 4360328613314237279}
   - {fileID: 4360155164273908595}
+  - {fileID: 3127084131685731986}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -106,7 +108,7 @@ Animator:
   m_GameObject: {fileID: 4364318242771253325}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 1545f59873176483dbec5b4f4afa8d0d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 3bec83ed5ed0e4ea9a4338fc7957942d, type: 2}
+  m_Controller: {fileID: 9100000, guid: b943d22031c56b94e85cdce91785b50a, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -115,6 +117,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-5347484903939011675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4364318242771253325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f2d70d051ec7b4da0e5ac2d396cf2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  density: 1
+  brickWallPreFab: {fileID: 7506421235474746810, guid: 5a2e74e5035e66f468d57981d8618446, type: 3}
+  buildWallPoint: {fileID: 0}
 --- !u!1 &4364329179860111901
 GameObject:
   m_ObjectHideFlags: 0
@@ -3030,4 +3047,34 @@ Transform:
   - {fileID: 4367884290509804625}
   m_Father: {fileID: 4367588034390654019}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4841112795744711276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3127084131685731986}
+  m_Layer: 0
+  m_Name: BuildWallPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3127084131685731986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4841112795744711276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4367381351104460725}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

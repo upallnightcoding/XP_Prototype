@@ -4,26 +4,17 @@ using UnityEngine;
 
 public class CoinGenerator : MonoBehaviour
 {
+    [SerializeField] CoinGeneratorSO gameState;
     [SerializeField] private GameObject coin;
-    [SerializeField] private int density;
-    [SerializeField] private int coinArea;
+    [SerializeField] private int frequency;
+    [SerializeField] private int coinCreationArea;
 
-    private int count = 0;
-
-    // Start is called before the first frame update
-    void Start()
+    void FixedUpdate()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Random.Range(1, density) == 1)
+        if (Random.Range(1, gameState.frequency) == 1)
         {
-            Vector3 pos = Random.insideUnitCircle * coinArea;
-            Instantiate(coin, new Vector3(pos.x, 0.3f, pos.y), Quaternion.identity);
-            coin.name = $"Coin: {count++}";
+            Vector3 pos = Random.insideUnitCircle * coinCreationArea;
+            Instantiate(coin, new Vector3(pos.x, 0.3f, pos.y), coin.transform.rotation);
         }
     }
 }
