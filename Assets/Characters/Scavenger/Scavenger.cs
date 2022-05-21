@@ -7,6 +7,7 @@ public class Scavenger : MonoBehaviour
     [SerializeField] private GameObject firePoint;
     [SerializeField] private GameObject fireBallPreFab;
 
+    // ThrowFireBall - 
     public void ThrowFireBall()
     {
         GameObject fileBall = Instantiate(fireBallPreFab, firePoint.transform.position, Quaternion.identity);
